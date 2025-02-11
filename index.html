@@ -14,8 +14,50 @@
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Font Example</title>
+    <!-- Add this line to link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Add your responsive font styles here */
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;  /* Default font size */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 2rem;  /* 32px */
+        }
+
+        p {
+            font-size: 1.1rem;  /* 17.6px */
+        }
+
+        @media only screen and (max-width: 768px) {
+            body {
+                font-size: 14px;  /* Smaller font size for mobile */
+            }
+
+            h1 {
+                font-size: 1.8rem;  /* 28.8px */
+            }
+
+            p {
+                font-size: 1rem;  /* 16px */
+            }
+        }
+    </style>
+
 </head>
 <body>
+
+    <body>
+        <h1>Responsive Font Example</h1>
+        <p>This is a paragraph with a responsive font. Try resizing the window to see how it adjusts.</p>
+    </body>
     
 <!-- header section starts  -->
 
