@@ -75,7 +75,6 @@
         <a href="#price">price</a>
         <a href="#review">review</a>
         <a href="#contact">contact</a>
-        <a href="login.php">login</a>
     </nav>
 
     <div id="menu-bars" class="fas fa-bars"></div>
@@ -93,7 +92,7 @@
             <img src="images/Rose Logo.png" alt="Rose Logo" style="height: 400px; width: auto; vertical-align: middle; margin-right: 50px;">
             it's time to celebrate! the best <span> event organizers </span>
         </h3>
-        <a href="#" class="btn">contact us</a>
+        <a href="contact.html" class="btn" target="_blank">Contact Us</a>
     </div>
 
     <div class="swiper-container home-slider">
@@ -586,17 +585,17 @@
 
     <h1 class="heading"> <span>contact</span> us </h1>
 
-    <form action="">
+    <form action="send_email.php" method="POST">
         <div class="inputBox">
-            <input type="text" placeholder="name">
-            <input type="email" placeholder="email">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
         </div>
         <div class="inputBox">
-            <input type="number" placeholder="number">
-            <input type="text" placeholder="subject">
+            <input type="number" name="number" placeholder="Number" required>
+            <input type="text" name="subject" placeholder="Subject" required>
         </div>
-        <textarea name="" placeholder="your message" id="" cols="30" rows="10"></textarea>
-        <input type="submit" value="send message" class="btn">
+        <textarea name="message" placeholder="Your message" cols="30" rows="10" required></textarea>
+        <input type="submit" value="Send Message" class="btn">
     </form>
 
 </section>
@@ -622,24 +621,28 @@
             <a href="#"> <i class="fas fa-arrow-right"></i> about </a>
             <a href="#"> <i class="fas fa-arrow-right"></i> gallery </a>
             <a href="#"> <i class="fas fa-arrow-right"></i> price </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> reivew </a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> review </a>
             <a href="#"> <i class="fas fa-arrow-right"></i> contact </a>
         </div>
 
         <div class="box">
             <h3>contact info</h3>
-            <a href="#"> <i class="fas fa-phone"></i> +91 6374551652 </a>
-            <a href="#"> <i class="fas fa-envelope"></i> rose.events5235@gmail.com </a>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i>  Jeevan Bhima nagar,Anna nagar,West Extension,Chennai </a>
+            <a href="tel:+916374551652">
+                <i class="fas fa-phone"></i> +91 6374551652
+            </a>            
+            <a href="mailto:rose.events5235@gmail.com?subject=Inquiry&body=Hello, I have an inquiry...">
+                <i class="fas fa-envelope"></i> rose.events5235@gmail.com
+            </a>
+            <a href="https://maps.app.goo.gl/uwx1jv7Ui61mkdJC9" target="_blank">
+                <i class="fas fa-map-marker-alt"></i> Jeevan Bhima Nagar, Anna Nagar, West Extension, Chennai
+            </a>            
         </div>
 
         <div class="box">
             <h3>follow us</h3>
-            <a href="https://facebook.com/freewebsitecode/"> <i class="fab fa-facebook-f"></i> facebook </a>
-            <a href="https://freewebsitecode.com/"> <i class="fab fa-twitter"></i> twitter </a>
-            <a href="https://freewebsitecode.com/"> <i class="fab fa-instagram"></i> instagram </a>
-            <a href="https://freewebsitecode.com/"> <i class="fab fa-linkedin"></i> linkedin </a>
-            <a href="https://www.youtube.com/channel/UC9HlQRmKgG3jeVD_fBxj1Pw/videos"> <i class="fab fa-youtube"></i> youtube </a>
+            <a href="https://www.facebook.com/share/12MHe1qU5Lh/"> <i class="fab fa-facebook-f"></i> facebook </a>
+            <a href="https://www.instagram.com/r.o.s.e.events?utm_source=qr&igsh=bnJtNGdwM2hwcXRx"> <i class="fab fa-instagram"></i> instagram </a>
+            <a href="https://youtube.com/@r.o.s.eevents?si=zlD6Phgd5CiVhvLz"> <i class="fab fa-youtube"></i> youtube </a>
         </div>
 
     </div>
