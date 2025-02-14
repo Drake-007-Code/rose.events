@@ -1,0 +1,11 @@
+git status
+
+git add index.html (html,css,js,etc)
+
+git add .
+
+git commit -m "Updated index.html with new changes"
+
+(html,css,js,etc)
+
+git push origin master
