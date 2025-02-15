@@ -68,3 +68,48 @@ var swiper = new Swiper(".review-slider", {
       disableOnInteraction:false,
   }
 });
+
+document.getElementById('review-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Get the review data from the form
+  const name = document.getElementById('review-name').value;
+  const text = document.getElementById('review-text').value;
+
+  // Send review data to the server
+  fetch('/submit-review', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, text })
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log(data.message); // Show a success message if needed
+      // Add the new review to the page
+      const reviewWrapper = document.getElementById('review-wrapper');
+      const reviewSlide = document.createElement('div');
+      reviewSlide.classList.add('swiper-slide', 'box');
+
+      reviewSlide.innerHTML = `
+          <i class="fas fa-quote-right"></i>
+          <div class="user">
+              <img src="images/pic-1.png" alt="">
+              <div class="user-info">
+                  <h3>${name}</h3>
+                  <span>happy client</span>
+              </div>
+          </div>
+          <p>${text}</p>
+      `;
+
+      // Append the new review to the swiper wrapper
+      reviewWrapper.appendChild(reviewSlide);
+
+      // Clear the form
+      document.getElementById('review-name').value = '';
+      document.getElementById('review-text').value = '';
+  })
+  .catch(error => console.error('Error submitting review:', error));
+});

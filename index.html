@@ -501,66 +501,31 @@
 
 <!-- review section starts  -->
 
-<section class="reivew" id="review"> 
-    
-    <h1 class="heading">client's <span>review</span></h1>
+<section class="review" id="review">
+    <h1 class="heading">Client's <span>Review</span></h1>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/+918489659776?text=${encodedMessage}" target="_blank">
+        <button>Send Review to WhatsApp</button>
+    </a>
 
     <div class="review-slider swiper-container">
-
-        <div class="swiper-wrapper">
-
-            <div class="swiper-slide box">
-                <i class="fas fa-quote-right"></i>
-                <div class="user">
-                    <img src="images/pic-1.png" alt="">
-                    <div class="user-info">
-                        <h3>Antony</h3>
-                        <span>happy clients</span>
-                    </div>
-                </div>
-                <p>I had the pleasure of attending a wedding and a birthday event recently, and I was truly impressed by how everything was organized. The event planners ensured that every detail was covered, from the decorations to the entertainment. As someone who is new to attending these kinds of events, I felt incredibly comfortable and welcomed. The atmosphere was warm, and the flow of the day was seamless. Whether you're a beginner or someone who has attended many events, I would highly recommend their services. Everything was handled with care, and I could see the effort they put into making the experience unforgettable.</p>
-            </div>
-
-            <div class="swiper-slide box">
-                <i class="fas fa-quote-right"></i>
-                <div class="user">
-                    <img src="images/pic-2.png" alt="">
-                    <div class="user-info">
-                        <h3>Suji</h3>
-                        <span>happy clients</span>
-                    </div>
-                </div>
-                <p>I recently attended a wedding and a birthday celebration organized by this amazing team, and I was absolutely thrilled with how everything turned out. As someone who's new to attending such events, I was a bit unsure about what to expect, but the entire experience was flawless. The team did a fantastic job making everyone feel comfortable and ensuring the event ran smoothly. From the decorations to the music and even the little details like the seating arrangements, everything was perfectly thought out. If you're a beginner and looking for an event that takes the stress out of planning, I highly recommend them.</p>
-            </div>
-
-            <div class="swiper-slide box">
-                <i class="fas fa-quote-right"></i>
-                <div class="user">
-                    <img src="images/pic-3.png" alt="">
-                    <div class="user-info">
-                        <h3>Nepolean</h3>
-                        <span>happy clients</span>
-                    </div>
-                </div>
-                <p>As someone who’s new to attending weddings and birthday parties, I didn’t know what to expect, but this experience was fantastic! The event was beautifully arranged, and I was impressed by how smoothly everything went. The team took care of every little detail, from the inviting decorations to the perfect timing of each segment of the event. It felt like everything was in perfect sync, and I didn’t have to worry about a thing. Whether you're new to such events or not, I highly recommend them for an unforgettable and stress-free experience.</p>
-            </div>
-
-            <div class="swiper-slide box">
-                <i class="fas fa-quote-right"></i>
-                <div class="user">
-                    <img src="images/pic-4.png" alt="">
-                    <div class="user-info">
-                        <h3>Bhavani</h3>
-                        <span>happy clients</span>
-                    </div>
-                </div>
-                <p>I recently attended a wedding and birthday event organized by this team, and I was beyond impressed! As a beginner, I didn’t know what to expect, but they made everything so easy and enjoyable. The attention to detail was exceptional, from the decorations to the flow of the event. The team ensured that everyone felt welcome and had a great time. For anyone new to attending such events, I highly recommend them. They made the entire experience seamless and memorable, and I couldn’t have asked for a better time!</p>
-            </div>
-
+        <div class="swiper-wrapper" id="review-wrapper">
+            <!-- Dynamic reviews will appear here -->
         </div>
-
     </div>
 
+    <!-- Review Submission Form -->
+    <div class="review-form">
+        <h3>Submit your Review</h3>
+        <form id="review-form" enctype="multipart/form-data">
+            <input type="text" id="review-name" placeholder="Your Name" required><br>
+            <textarea id="review-text" placeholder="Write your review here..." required></textarea><br>
+            <input type="file" id="review-image"><br>
+            <input type="color" id="color-picker" value="#ffcc00"><br>
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
 </section>
 
 <!-- review section ends -->
