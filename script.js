@@ -69,47 +69,77 @@ var swiper = new Swiper(".review-slider", {
   }
 });
 
-document.getElementById('review-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  // Get the review data from the form
-  const name = document.getElementById('review-name').value;
-  const text = document.getElementById('review-text').value;
-
-  // Send review data to the server
-  fetch('/submit-review', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name, text })
-  })
-  .then(response => response.json())
-  .then(data => {
-      console.log(data.message); // Show a success message if needed
-      // Add the new review to the page
-      const reviewWrapper = document.getElementById('review-wrapper');
+// Function to load reviews from localStorage and display them
+function loadReviews() {
+  const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+  const reviewWrapper = document.getElementById('review-wrapper');
+  
+  reviewWrapper.innerHTML = ""; // Clear existing reviews
+  
+  reviews.forEach(review => {
       const reviewSlide = document.createElement('div');
       reviewSlide.classList.add('swiper-slide', 'box');
+      reviewSlide.style.backgroundColor = review.color;
 
       reviewSlide.innerHTML = `
           <i class="fas fa-quote-right"></i>
           <div class="user">
-              <img src="images/pic-1.png" alt="">
+              <img src="${review.imageUrl}" alt="Review Image" style="max-width: 100px; max-height: 100px;">
               <div class="user-info">
-                  <h3>${name}</h3>
+                  <h3>${review.name}</h3>
                   <span>happy client</span>
               </div>
           </div>
-          <p>${text}</p>
+          <p>${review.text}</p>
       `;
 
-      // Append the new review to the swiper wrapper
       reviewWrapper.appendChild(reviewSlide);
+  });
+}
 
-      // Clear the form
-      document.getElementById('review-name').value = '';
-      document.getElementById('review-text').value = '';
-  })
-  .catch(error => console.error('Error submitting review:', error));
+// Handle review form submission
+document.getElementById('review-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('review-name').value;
+  const text = document.getElementById('review-text').value;
+  const color = document.getElementById('color-picker').value;
+  const image = document.getElementById('review-image').files[0];
+
+  // Create an object to hold the review data
+  const review = {
+      name,
+      text,
+      color,
+      imageUrl: ''  // Default empty URL
+  };
+
+  // If there's an image, upload it locally and set its URL
+  if (image) {
+      const reader = new FileReader();
+      reader.onloadend = function() {
+          review.imageUrl = reader.result; // Set the base64 image as URL
+          saveReview(review); // Save review to localStorage after image processing
+      };
+      reader.readAsDataURL(image);
+  } else {
+      saveReview(review); // Save review if there's no image
+  }
+
+  // Clear the form
+  document.getElementById('review-name').value = '';
+  document.getElementById('review-text').value = '';
 });
+
+// Function to save the review to localStorage
+function saveReview(review) {
+  const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+  reviews.push(review);
+  localStorage.setItem('reviews', JSON.stringify(reviews)); // Save updated reviews
+
+  // Reload the reviews on the page
+  loadReviews();
+}
+
+// Load reviews on page load
+window.addEventListener('load', loadReviews);

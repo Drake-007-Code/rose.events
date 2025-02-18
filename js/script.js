@@ -68,3 +68,79 @@ var swiper = new Swiper(".review-slider", {
       disableOnInteraction:false,
   }
 });
+
+document.getElementById('review-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Get the form data
+    const name = document.getElementById('review-name').value;
+    const text = document.getElementById('review-text').value;
+    const image = document.getElementById('review-image').files[0];
+    const color = document.getElementById('color-picker').value;
+
+    // Read the image file as a data URL
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const imageUrl = event.target.result;
+
+        // Create a review object
+        const review = {
+            name: name,
+            text: text,
+            image: imageUrl,
+            color: color
+        };
+
+        // Get existing reviews from localStorage
+        const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+        // Add the new review to the array
+        reviews.push(review);
+
+        // Save the updated reviews array to localStorage
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+
+        // Update the review section
+        displayReviews();
+    };
+    reader.readAsDataURL(image);
+});
+
+function displayReviews() {
+    const reviewWrapper = document.getElementById('review-wrapper');
+    reviewWrapper.innerHTML = ''; // Clear existing reviews
+
+    // Get reviews from localStorage
+    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+    // Create review elements for each review
+    reviews.forEach(review => {
+        const reviewElement = document.createElement('div');
+        reviewElement.classList.add('swiper-slide');
+        reviewElement.style.backgroundColor = review.color;
+
+        const reviewContent = `
+            <div class="review-content">
+                <img src="${review.image}" alt="Review Image">
+                <h3>${review.name}</h3>
+                <p>${review.text}</p>
+            </div>
+        `;
+        reviewElement.innerHTML = reviewContent;
+        reviewWrapper.appendChild(reviewElement);
+    });
+
+    // Reinitialize the swiper
+    new Swiper('.review-slider', {
+        loop: true,
+        grabCursor: true,
+        spaceBetween: 20,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+}
+
+// Display reviews on page load
+document.addEventListener('DOMContentLoaded', displayReviews);

@@ -306,15 +306,6 @@
             </div>
         </div>
 
-        <style>
-            /* Add this CSS to your stylesheet or within <style> tag in HTML */
-            .likeCount {
-                font-size: 18px; /* Adjust font size as needed */
-                color: #ff6347; /* Red color, change to any color you want */
-                font-weight: bold;
-            }
-        </style>
-
         <script>
             // Like functionality: Increment the like count for each box
             document.querySelectorAll('.fas.fa-heart').forEach(function(likeIcon, index) {
@@ -379,6 +370,40 @@
                 });
             });
         </script>
+        
+        <script>
+            // Set like count for a specific image (image ID 1)
+            function setLikeCount(imageId, count) {
+                localStorage.setItem(`likeCount-${imageId}`, count);
+            }
+        
+            // Get the like count for a specific image (image ID 1)
+            function getLikeCount(imageId) {
+                return localStorage.getItem(`likeCount-${imageId}`) || 0;
+            }
+        
+            // Example: Click event for like button
+            document.querySelector('.fas.fa-heart').addEventListener('click', function() {
+                const imageId = 1;  // Use a dynamic ID based on your image
+                let currentCount = parseInt(getLikeCount(imageId));
+                currentCount++;
+                setLikeCount(imageId, currentCount);
+        
+                // Update the UI with the new like count
+                document.querySelector('.likeCount').textContent = currentCount;
+            });
+        
+            // On page load, set the like count from localStorage
+            document.addEventListener('DOMContentLoaded', function() {
+                const imageId = 1;  // Use a dynamic ID based on your image
+                const count = getLikeCount(imageId);
+                document.querySelector('.likeCount').textContent = count;
+            });
+        </script>
+        
+        
+
+    </div>
 
 </section>
 
