@@ -599,6 +599,39 @@
 </section>
 
 <script>
+    document.querySelector("form").addEventListener("submit", function(e) {
+        e.preventDefault(); // Prevent default form submission
+        
+        // Collect form data
+        const formData = new FormData(e.target);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        
+        // Send data to Google Apps Script
+        fetch("https://script.google.com/macros/s/AKfycbzuRQVE48wIRCsVKBPG9x_LQdhWAqEWgCjCCuEjhY-J0wveIeSf1M7NyxA1KvbQkaJo/exec", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.text())
+        .then(result => {
+            alert("Message Sent Successfully!");
+            // Optionally reset the form
+            e.target.reset();
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("There was an error sending your message. Please try again.");
+        });
+    });
+</script>
+
+
+<script>
     document.querySelector('form').addEventListener('submit', function(e) {
         e.preventDefault(); // Prevent the default form submission
 
