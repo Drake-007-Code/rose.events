@@ -713,78 +713,21 @@
 
 <!-- contact section starts  -->
 
-<section class="contact" id="contact">
-    <h1 class="heading"> <span>contact</span> us </h1>
-
-    <form>
+<section class="contact">
+    <form id="contact-form" method="POST" action="https://script.google.com/macros/s/AKfycbz2GFIoA6BV-QsbsLnd5eCLleALGL8Nj1dJ9KIhPJx1Ra4YjSuQYHoTBUluW1MZdQ/exec">
+        <h2 style="color: blue;">Contact Us</h2>
         <div class="inputBox">
             <input type="text" name="name" placeholder="Name" required>
             <input type="email" name="email" placeholder="Email" required>
         </div>
         <div class="inputBox">
-            <input type="number" name="number" placeholder="Number" required>
+            <input type="number" name="number" placeholder="Phone Number" required>
             <input type="text" name="subject" placeholder="Subject" required>
         </div>
         <textarea name="message" placeholder="Your message" cols="30" rows="10" required></textarea>
         <input type="submit" value="Send Message" class="btn">
     </form>
 </section>
-
-<script>
-    document.querySelector("form").addEventListener("submit", function(e) {
-        e.preventDefault(); // Prevent default form submission
-        
-        // Collect form data
-        const formData = new FormData(e.target);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
-        
-        // Send data to Google Apps Script
-        fetch("https://script.google.com/macros/s/AKfycbzuRQVE48wIRCsVKBPG9x_LQdhWAqEWgCjCCuEjhY-J0wveIeSf1M7NyxA1KvbQkaJo/exec", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.text())
-        .then(result => {
-            alert("Message Sent Successfully!");
-            // Optionally reset the form
-            e.target.reset();
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("There was an error sending your message. Please try again.");
-        });
-    });
-</script>
-
-
-<script>
-    document.querySelector('form').addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent the default form submission
-
-        // Get the form data
-        const name = document.querySelector('[name="name"]').value;
-        const email = document.querySelector('[name="email"]').value;
-        const number = document.querySelector('[name="number"]').value;
-        const subject = document.querySelector('[name="subject"]').value;
-        const message = document.querySelector('[name="message"]').value;
-
-        // Construct the message to send via WhatsApp
-        const messageText = `New message from:\nName: ${name}\nEmail: ${email}\nPhone: ${number}\nSubject: ${subject}\nMessage: ${message}`;
-        
-        // Encode the message for the URL
-        const encodedMessage = encodeURIComponent(messageText);
-        
-        // Open WhatsApp with the pre-filled message (replace 'your_number' with your WhatsApp number)
-        const whatsappLink = `https://wa.me/+918489659776?text=${encodedMessage}`;
-        window.open(whatsappLink, '_blank');
-    });
-</script>
 
 
 <!-- contact section ends -->

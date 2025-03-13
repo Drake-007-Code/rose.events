@@ -362,48 +362,84 @@ section{
     font-size: 1.6rem;
 }
 
-.contact form{
+/* Basic styling for the contact form section */
+.contact {
     max-width: 70rem;
-    margin:1rem auto;
+    margin: 1rem auto;
     text-align: center;
 }
 
-.contact form .inputBox{
+/* Style for the form and input fields */
+.contact form {
+    background-color: #290fc0;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(43, 12, 221, 0.2);
+}
+
+/* Styling for the inputBox, input, and textarea elements */
+.contact form .inputBox {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
 .contact form .inputBox input,
-.contact form textarea{
+.contact form textarea {
     width: 100%;
-    background:#333;
-    border-radius: .5rem;
-    padding:1rem;
-    margin:.7rem 0;
+    background: #333;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 0.7rem 0;
     font-size: 1.5rem;
-    color:#fff;
+    color: #fff;
     text-transform: none;
 }
 
+/* Placeholder styling */
 .contact form .inputBox input::placeholder,
-.contact form textarea::placeholder{
-    color:#eee;
+.contact form textarea::placeholder {
+    color: #eee;
     text-transform: capitalize;
 }
 
+/* Focused input field and textarea styling */
 .contact form .inputBox input:focus,
-.contact form textarea:focus{
-    background:#444;
+.contact form textarea:focus {
+    background: #444;
 }
 
-.contact form .inputBox input{
-    width: 49%;
+/* Styling for the input fields */
+.contact form .inputBox input {
+    width: 49%; /* Makes the input fields align side-by-side */
 }
 
-.contact form textarea{
+/* Textarea style to prevent resizing */
+.contact form textarea {
     resize: none;
 }
+
+/* Button styling */
+.contact form input[type="submit"] {
+    width: 100%;
+    padding: 1.2rem;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.contact form input[type="submit"]:active {
+    background-color: #004080;
+}
+
 
 .footer{
     background:#111;
